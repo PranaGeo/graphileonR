@@ -26,9 +26,11 @@ grr_meananalysis <- function(sampledata) {
   print(paste("yeshhh", class(sampledata)))
   sampledata <- jsonlite::fromJSON(sampledata)
   labels = c("work","sleep", "sport", "family", "shopping", "other")
-  sapply(labels, function(x){
+  output <- sapply(labels, function(x){
     mean(sampledata[,x])
   })
+  names(output) <- labels
+  output
 }
 
 pgocpu_temp_token <- function(urlpart){
