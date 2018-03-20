@@ -18,6 +18,10 @@ grr_sampledata <- function() {
   jsonlite::fromJSON(fnm)
 }
 
+grr_123 <- function() {
+  print("hey there!")
+}
+
 grr_meananalysis <- function(sampledata) {
   print(paste("yeshhh", class(sampledata)))
   sampledata <- jsonlite::fromJSON(sampledata)
