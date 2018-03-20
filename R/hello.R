@@ -31,7 +31,7 @@ grr_meananalysis <- function(sampledata) {
   })
   names(output) <- labels
   print(class(output))
-  output
+  jsonlite::toJSON(output)
 }
 
 pgocpu_temp_token <- function(urlpart){
