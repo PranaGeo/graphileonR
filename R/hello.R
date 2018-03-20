@@ -19,6 +19,7 @@ grr_sampledata <- function() {
 }
 
 grr_meananalysis <- function(sampledata) {
+  sampledata <- jsonlite::fromJSON(sampledata)
   labels = c("work","sleep", "sport", "family", "shopping", "other")
   sapply(labels, function(x){
     mean(sampledata[,x])
