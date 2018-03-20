@@ -30,6 +30,7 @@ grr_meananalysis <- function(sampledata) {
     mean(sampledata[,x])
   })
   names(output) <- labels
+  print(class(output))
   output
 }
 
