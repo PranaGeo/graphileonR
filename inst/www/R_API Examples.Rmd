@@ -1,5 +1,5 @@
 ---
-title: "PranaGEO R_API"
+title: "Tests with PranaGEO R_API"
 output: html_document
 ---
 
@@ -7,28 +7,23 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Introduction
+PranaGEO R API engine is a scalable, secure, stateless REST API alowing to make R calls. 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+HTML rendering of this document will be deployed online at http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/www/R_API_Examples.html
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Input data
+The input data for this demo is accessible (online)[https://github.com/PranaGeo/graphileonR/blob/master/inst/extdata/data.json]
+
+```{bash}
+curl https://github.com/PranaGeo/graphileonR/blob/master/inst/extdata/data.json
+graphileonR/inst/extdata/data.json
+```
+
+## Calculating mean
 
 ```{bash, results = "hide"}
 curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -X POST -F sampledata=@/home/acizmeli/data/aaworks/GIT.repos/graphileon-rserve/graphileonR/inst/extdata/data.json 
-
 ```
 
-```{r, results = "hide"}
-list.files()
-print("yes")
-```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
