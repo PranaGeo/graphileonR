@@ -18,12 +18,9 @@ grr_sampledata <- function() {
   jsonlite::fromJSON(fnm)
 }
 
-grr_123 <- function() {
-  print("hey there!")
-}
-
+#curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
+#a=grr_meananalysis(sampledata = paste(readLines("inst/extdata/data.json"),collapse = " "))
 grr_meananalysis <- function(sampledata) {
-  print(paste("yeshhh", class(sampledata)))
   sampledata <- jsonlite::fromJSON(sampledata)
   labels = c("work","sleep", "sport", "family", "shopping", "other")
   output <- sapply(labels, function(x){
