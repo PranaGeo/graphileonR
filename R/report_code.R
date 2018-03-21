@@ -14,7 +14,7 @@
 #   Test Package:              'Ctrl + Shift + T'
 
 grr_sampledata <- function() {
-  fnm = file.path(base::system.file(package = "GraphileonR"), "extdata/data.json")
+  fnm = file.path(base::system.file(package = "graphileonR"), "extdata/data.json")
   jsonlite::fromJSON(fnm)
 }
 
