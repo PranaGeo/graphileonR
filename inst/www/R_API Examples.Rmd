@@ -12,6 +12,11 @@ PranaGEO R API engine is a scalable, secure, stateless REST API alowing to make 
 
 HTML rendering of this document will be deployed online at http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/www/R_API_Examples.html
 
+```{r}
+library(httr)
+library(jsonlite)
+```
+
 ## Input data
 The input data for this demo is accessible (online)[https://github.com/PranaGeo/graphileonR/blob/master/inst/extdata/data.json]. One can download it directly with curl :
 
@@ -19,13 +24,26 @@ The input data for this demo is accessible (online)[https://github.com/PranaGeo/
 curl -O https://raw.githubusercontent.com/PranaGeo/graphileonR/master/inst/extdata/data.json
 ```
 
-
 or use the getter function *grr_sampledata()*
 
 ```{bash results="hide"}
 curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json
 ```
-y
+
+We can also download it using R and convert it to *data.frame*
+```{r}
+res <- POST("http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json")
+df <- jsonlite::fromJSON(rawToChar(res$content))
+df
+```
+## Multiple regression
+If we would like to study the factors affecting the sleep, we could run a multiple linear regression. The following analysis reveals how much the time spent at work, with family or at shopping is related with hours spent in sleep :
+```{r}
+model <- lm(sleep ~ work + family + shopping, data = df)
+summary(model)
+```
+
+
 ## Calculating mean values
 **Using curl**
 ```{bash}
@@ -33,17 +51,15 @@ curl -X POST -s http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr
 ```
 **Using R**
 ```{R}
-library(httr)
-library(jsonlite)
 res <- POST("http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json", body = list(sampledata=upload_file("../extdata/data.json")))
 data <- fromJSON(fromJSON(rawToChar(res$content)))
-df <- data.frame(hobby=names(data), averages=sapply(data, function(x)x))
-df
+df.avg <- data.frame(hobby=names(data), averages=sapply(data, function(x)x))
+df.avg
 ```
 
 ## Plotting results in a pie chart
 ```{r}
 suppressPackageStartupMessages(library(plotly))
-plot_ly(data=df, labels=~hobby, values=~averages, type = "pie")
+plot_ly(data=df.avg, labels=~hobby, values=~averages, type = "pie")
 ```
 

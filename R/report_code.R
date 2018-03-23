@@ -31,6 +31,12 @@ grr_meananalysis <- function(sampledata) {
   jsonlite::toJSON(as.list(output), auto_unbox = TRUE)
 }
 
+grr_multiplereg <- function(sampledata){
+  mymodel <- lm(sleep ~ work + family + shopping, data = sampledata)
+  print(summary(mymodel))
+  mymodel
+}
+
 pgocpu_temp_token <- function(urlpart){
   out <- strsplit(urlpart, "/")[[1]]
   out <- out[4]
