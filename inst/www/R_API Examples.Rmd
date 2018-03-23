@@ -13,7 +13,14 @@ PranaGEO R API engine is a scalable, secure, stateless REST API alowing to make 
 HTML rendering of this document will be deployed online at http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/www/R_API_Examples.html
 
 ## Input data
-The input data for this demo is accessible (online)[https://github.com/PranaGeo/graphileonR/blob/master/inst/extdata/data.json]
+The input data for this demo is accessible (online)[https://github.com/PranaGeo/graphileonR/blob/master/inst/extdata/data.json]. One can download it directly with curl :
+
+```{bash results="hide"}
+curl -O https://raw.githubusercontent.com/PranaGeo/graphileonR/master/inst/extdata/data.json
+```
+
+
+or use the getter function *grr_sampledata()*
 
 ```{bash results="hide"}
 curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json
@@ -22,7 +29,7 @@ curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sa
 ## Calculating mean values
 **Using curl**
 ```{bash}
-curl -X POST -s http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -F sampledata=@"../extdata/data.json"
+curl -X POST -s http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -F sampledata=@"data.json"
 ```
 **Using R**
 ```{R}
