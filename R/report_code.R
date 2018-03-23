@@ -31,7 +31,9 @@ grr_meananalysis <- function(sampledata) {
   jsonlite::toJSON(as.list(output), auto_unbox = TRUE)
 }
 
+#curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_multiplereg/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
 grr_multiplereg <- function(sampledata){
+  sampledata <- jsonlite::fromJSON(sampledata)
   mymodel <- lm(sleep ~ work + family + shopping, data = sampledata)
   print(summary(mymodel))
   mymodel
