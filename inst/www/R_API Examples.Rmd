@@ -25,7 +25,7 @@ or use the getter function *grr_sampledata()*
 ```{bash results="hide"}
 curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json
 ```
-
+y
 ## Calculating mean values
 **Using curl**
 ```{bash}
