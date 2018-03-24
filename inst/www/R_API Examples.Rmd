@@ -37,7 +37,7 @@ df <- jsonlite::fromJSON(rawToChar(res$content))
 df
 ```
 ## Multiple regression
-If we would like to study the factors affecting the sleep, we could run a multiple linear regression. The following analysis reveals how much the time spent at work, with family or at shopping is related with hours spent in sleep :
+To study the factors affecting the sleep, we could run a multiple linear regression on the dataset. The following analysis reveals how much the time spent at work/family/shopping is affecting the hours spent in sleep :
 ```{r}
 model <- lm(sleep ~ work + family + shopping, data = df)
 summary(model)
