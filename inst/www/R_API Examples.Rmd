@@ -1,5 +1,5 @@
 ---
-title: "Tests with PranaGEO R_API"
+title: "Introduction to PranaGEO RaaS API"
 output: html_document
 ---
 
@@ -27,12 +27,12 @@ curl -O https://raw.githubusercontent.com/PranaGeo/graphileonR/master/inst/extda
 or use the getter function *grr_sampledata()*
 
 ```{bash results="hide"}
-curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json
+curl -X POST http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/print
 ```
 
 We can also download it using R and convert it to *data.frame*
 ```{r}
-res <- POST("http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/json")
+res <- POST("http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_sampledata/print")
 df <- jsonlite::fromJSON(rawToChar(res$content))
 df
 ```
@@ -47,7 +47,7 @@ summary(model)
 ## Calculating mean values
 **Using curl**
 ```{bash}
-curl -X POST -s http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -F sampledata=@"data.json"
+curl -X POST -s http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/print -F sampledata=@"data.json"
 ```
 **Using R**
 ```{R}
