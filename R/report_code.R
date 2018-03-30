@@ -16,7 +16,7 @@
 grr_sampledata <- function() {
   fnm = file.path(base::system.file(package = "graphileonR"), "extdata/data.json")
   #Return json
-  jsonlite::toJSON(jsonlite::fromJSON(fnm))
+  jsonlite::fromJSON(fnm)
 }
 
 #curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
@@ -29,7 +29,7 @@ grr_meananalysis <- function(sampledata) {
   })
   names(output) <- labels
   print(class(output))
-  jsonlite::toJSON(as.list(output), auto_unbox = TRUE, pretty=TRUE)
+  jsonlite::toJSON(as.list(output), auto_unbox = TRUE)
 }
 
 #curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_multiplereg/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
