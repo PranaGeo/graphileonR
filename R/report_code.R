@@ -29,7 +29,7 @@ grr_meananalysis <- function(sampledata) {
   })
   names(output) <- labels
   print(class(output))
-  jsonlite::toJSON(as.list(output), auto_unbox = TRUE)
+  jsonlite::toJSON(as.list(output), auto_unbox = TRUE, pretty=TRUE)
 }
 
 #curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_multiplereg/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
