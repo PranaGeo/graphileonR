@@ -16,7 +16,7 @@
 grr_sampledata <- function() {
   fnm = file.path(base::system.file(package = "graphileonR"), "extdata/data.json")
   #Return json
-  jsonlite::fromJSON(fnm)
+  jsonlite::toJSON(jsonlite::fromJSON(fnm),pretty = TRUE)
 }
 
 #curl http://coreos3.pranageo.com/ocpu/apps/pranageo/graphileonR/R/grr_meananalysis/json -X POST -F sampledata=@graphileonR/inst/extdata/data.json
